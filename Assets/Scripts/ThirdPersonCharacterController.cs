@@ -14,6 +14,8 @@ public class ThirdPersonCharacterController : MonoBehaviour
 
 	public CapsuleCollider col;
 
+	public int resourceAmount = 0;
+
 	// Update is called once per frame
 
 	private void Start()
@@ -30,6 +32,11 @@ public class ThirdPersonCharacterController : MonoBehaviour
 		{
 			rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
+
+		//if (resourceAmount < 0)
+		//{
+		//	Destroy(gameObject);
+		//}
 	}
 
 	void PlayerMovement()
