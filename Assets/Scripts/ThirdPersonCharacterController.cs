@@ -14,7 +14,7 @@ public class ThirdPersonCharacterController : MonoBehaviour
 
 	private BoxCollider col;
 
-	public int resourceAmount = 0;
+	public int resourceAmount = 5;
 
 	private float distToGround;
 
@@ -36,10 +36,11 @@ public class ThirdPersonCharacterController : MonoBehaviour
 			rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 		}
 
-		//if (resourceAmount < 0)
-		//{
-		//	Destroy(gameObject);
-		//}
+		if (resourceAmount <= 0)
+		{
+			rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationY;
+			Debug.Log("You have lost all your gnomes! You Lose!");
+		}
 	}
 
 	void PlayerMovement()

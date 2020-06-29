@@ -22,7 +22,7 @@ public class SpikeCode : MonoBehaviour
         {
             //Destroys the object to mimic picking it up and displaying a message
             spikeCol.gameObject.GetComponent<ThirdPersonCharacterController>().resourceAmount -= 1;
-            Debug.Log("You lost a resource!");
+            spikeCol.gameObject.GetComponent<miniSpawn>().isHurt = true;
         }
     }
 }

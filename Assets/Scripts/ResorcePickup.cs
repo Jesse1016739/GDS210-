@@ -37,7 +37,7 @@ public class ResorcePickup : MonoBehaviour
             //Destroys the object to mimic picking it up and displaying a message
             Destroy(gameObject);
             resourceCol.gameObject.GetComponent<ThirdPersonCharacterController>().resourceAmount += 1;
-            Debug.Log("You got a resource!");
+            Debug.Log("You got a gnome!");
         }
     }
 }
