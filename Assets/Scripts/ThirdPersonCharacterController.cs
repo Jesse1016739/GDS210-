@@ -12,16 +12,19 @@ public class ThirdPersonCharacterController : MonoBehaviour
 
 	public float jumpForce = 7;
 
-	public CapsuleCollider col;
+	private BoxCollider col;
 
 	public int resourceAmount = 0;
+
+	private float distToGround;
 
 	// Update is called once per frame
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-		col = GetComponent<CapsuleCollider>();
+		col = GetComponent<BoxCollider>();
+		distToGround = col.bounds.extents.y;
 	}
 
 	void Update()
@@ -49,6 +52,9 @@ public class ThirdPersonCharacterController : MonoBehaviour
 
 	private bool IsGrounded()
 	{
-		return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), col.radius * .9f, groundLayers);
+		//This line of code was originally for the players capsule collider however for a pltformer a box collider was a better idea
+		//return Physics.CheckBox(col.bounds.center, new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), col.radius * .9f, groundLayers);
+		return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+
 	}
 }
