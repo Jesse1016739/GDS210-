@@ -6,13 +6,15 @@ public class Respawn : MonoBehaviour
 {
 	[SerializeField] private Transform player;
 	private GameMaster gm;
-	
+
 
 	private void OnTriggerEnter(Collider other)
 	{
-		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
-		player.transform.position = gm.LastCheckpointPos;
+		if (other.tag == "Player")
+		{
+			gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+			player.transform.position = gm.LastCheckpointPos;
+		}
 	}
-
 
 }

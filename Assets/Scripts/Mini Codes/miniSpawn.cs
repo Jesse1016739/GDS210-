@@ -28,7 +28,7 @@ public class miniSpawn : MonoBehaviour
         if (isHurt == true)
         {
             numberOfMinis += 1;
-            Instantiate(minis, spawners[randomMiniSpawn].transform);
+            Instantiate(minis, spawners[randomMiniSpawn].transform.transform);
 
             Debug.Log("You have lost a gnome!");
 
